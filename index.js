@@ -1,30 +1,41 @@
 "use strict";
 const buttonOne = document.querySelector('.js-step-one');
-const buttonTwo = document.querySelector('.js-step-two');
 const fetchUserEmail = document.querySelector('#js-email');
+const buttonTwo = document.querySelector('.js-step-two');
 const stepTwo = document.querySelector('.step-two');
 stepTwo.style.visibility = 'hidden';
+const fetchUserName = document.querySelector('#js-name');
+const stepThree = document.querySelector('.step-three');
+stepThree.style.visibility = 'hidden';
+const fetchUserData = (userInput, button) => {
+    if (userInput.length !== 0) {
+        button.disabled = false;
+    }
+    else {
+        button.disabled = true;
+    }
+};
+const toggleVisibility = (nextStep, previousStep) => {
+    if (nextStep.style.visibility === 'hidden') {
+        nextStep.style.visibility = 'visible';
+    }
+    else {
+        nextStep.style.visibility = 'hidden';
+    }
+    previousStep.style.visibility = 'hidden';
+};
 fetchUserEmail.addEventListener('input', (event) => {
     let userEmail = event.target.value;
-    if (userEmail.length !== 0) {
-        buttonOne.disabled = false;
-    }
-    else {
-        buttonOne.disabled = true;
-    }
+    fetchUserData(userEmail, buttonOne);
 });
 buttonOne === null || buttonOne === void 0 ? void 0 : buttonOne.addEventListener('click', () => {
-    if (stepTwo.style.visibility === 'hidden') {
-        stepTwo.style.visibility = 'visible';
-    }
-    else {
-        stepTwo.style.visibility = 'hidden';
-    }
     const stepOne = document.querySelector('.step-one-form');
-    stepOne.style.visibility = 'hidden';
+    toggleVisibility(stepTwo, stepOne);
+});
+fetchUserName.addEventListener('input', (event) => {
+    let userName = event.target.value;
+    fetchUserData(userName, buttonTwo);
 });
 buttonTwo === null || buttonTwo === void 0 ? void 0 : buttonTwo.addEventListener('click', () => {
-    const fetchUserName = document.querySelector('#js-name');
-    const userName = fetchUserName.value;
-    console.log(userName);
+    toggleVisibility(stepThree, stepTwo);
 });
