@@ -1,4 +1,5 @@
 "use strict";
+const stepOne = document.querySelector('.js-step-one-form');
 const buttonOne = document.querySelector('.js-step-one');
 const fetchUserEmail = document.querySelector('#js-email');
 const buttonTwo = document.querySelector('.js-step-two');
@@ -29,7 +30,9 @@ const toggleVisibility = (nextStep, previousStep) => {
     else {
         nextStep.style.visibility = 'hidden';
     }
-    previousStep.style.visibility = 'hidden';
+    if (previousStep !== null) {
+        previousStep.style.visibility = 'hidden';
+    }
 };
 fetchUserEmail.addEventListener('input', (event) => {
     let userEmail = event.target.value;
@@ -50,7 +53,6 @@ fetchUserPassword === null || fetchUserPassword === void 0 ? void 0 : fetchUserP
     toggleButton(userPassword, submitButton);
 });
 buttonOne === null || buttonOne === void 0 ? void 0 : buttonOne.addEventListener('click', () => {
-    const stepOne = document.querySelector('.step-one-form');
     toggleVisibility(stepTwo, stepOne);
 });
 buttonTwo === null || buttonTwo === void 0 ? void 0 : buttonTwo.addEventListener('click', () => {
@@ -65,4 +67,8 @@ submitButton === null || submitButton === void 0 ? void 0 : submitButton.addEven
     }
     user.email = '';
     user.name = '';
+});
+const stepOneTitle = document.querySelector('.js-title');
+stepOneTitle === null || stepOneTitle === void 0 ? void 0 : stepOneTitle.addEventListener('click', () => {
+    toggleVisibility(stepOne, null);
 });

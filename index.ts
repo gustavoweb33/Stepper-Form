@@ -1,3 +1,4 @@
+const stepOne = document.querySelector('.js-step-one-form') as HTMLElement;
 const buttonOne = document.querySelector('.js-step-one') as HTMLButtonElement;
 const fetchUserEmail = document.querySelector('#js-email')! as HTMLInputElement;
 
@@ -27,7 +28,7 @@ const toggleButton = (userInput: string, button: HTMLButtonElement) => {
     return true;
 }
 
-const toggleVisibility = (nextStep: HTMLElement, previousStep: HTMLElement): void => {
+const toggleVisibility = (nextStep: HTMLElement, previousStep: HTMLElement | null): void => {
     if (nextStep.style.visibility === 'hidden') {
         nextStep.style.visibility = 'visible';
     }
@@ -35,7 +36,9 @@ const toggleVisibility = (nextStep: HTMLElement, previousStep: HTMLElement): voi
         nextStep.style.visibility = 'hidden';
     }
 
-    previousStep.style.visibility = 'hidden';
+    if (previousStep !== null) {
+        previousStep.style.visibility = 'hidden';
+    }
 }
 
 
@@ -65,7 +68,6 @@ fetchUserPassword?.addEventListener('input', (event) => {
 });
 
 buttonOne?.addEventListener('click', () => {
-    const stepOne = document.querySelector('.step-one-form') as HTMLElement;
     toggleVisibility(stepTwo, stepOne)
 });
 
@@ -87,4 +89,8 @@ submitButton?.addEventListener('click', () => {
     user.name = '';
 });
 
+const stepOneTitle = document.querySelector('.js-title') as HTMLLIElement;
+stepOneTitle?.addEventListener('click', () => {
+    toggleVisibility(stepOne, null);
+});
 
