@@ -1,3 +1,7 @@
-.step-one-title:hover {
+h3:hover {
     cursor: pointer;
+}
+
+.step-two {
+    visibility: hidden;
 }
