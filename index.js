@@ -4,7 +4,7 @@ const buttonOne = document.querySelector('.js-step-one');
 const fetchUserEmail = document.querySelector('#js-email');
 const buttonTwo = document.querySelector('.js-step-two');
 const stepTwo = document.querySelector('.step-two');
-stepTwo.style.visibility = 'hidden';
+//stepTwo.style.visibility = 'hidden';
 const fetchUserName = document.querySelector('#js-name');
 const submitButton = document.querySelector('.js-submit');
 const stepThree = document.querySelector('.step-three');
@@ -24,12 +24,12 @@ const toggleButton = (userInput, button) => {
     return true;
 };
 const toggleVisibility = (nextStep, previousStep) => {
-    if (nextStep.style.visibility === 'hidden') {
-        nextStep.style.visibility = 'visible';
-    }
-    else {
-        nextStep.style.visibility = 'hidden';
-    }
+    nextStep.style.visibility = 'visible';
+    // if (nextStep.style.visibility === 'hidden') {
+    // }
+    // else {
+    //     nextStep.style.visibility = 'hidden';
+    // }
     if (previousStep !== null) {
         previousStep.style.visibility = 'hidden';
     }
@@ -68,7 +68,20 @@ submitButton === null || submitButton === void 0 ? void 0 : submitButton.addEven
     user.email = '';
     user.name = '';
 });
-const stepOneTitle = document.querySelector('.js-title');
+const stepOneTitle = document.querySelector('.js-title-one');
 stepOneTitle === null || stepOneTitle === void 0 ? void 0 : stepOneTitle.addEventListener('click', () => {
-    toggleVisibility(stepOne, null);
+    if (stepOne.style.visibility === 'hidden') {
+        toggleVisibility(stepOne, null);
+    }
+    stepTwo.style.visibility = 'hidden';
+    stepThree.style.visibility = 'hidden';
 });
+const stepTwoTitle = document.querySelector('.js-title-two');
+stepTwoTitle === null || stepTwoTitle === void 0 ? void 0 : stepTwoTitle.addEventListener('click', () => {
+    if (stepTwo.style.visibility === 'hidden') {
+        toggleVisibility(stepTwo, null);
+    }
+    stepOne.style.visibility = 'hidden';
+    stepThree.style.visibility = 'hidden';
+});
+//  

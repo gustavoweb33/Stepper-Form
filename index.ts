@@ -4,14 +4,13 @@ const fetchUserEmail = document.querySelector('#js-email')! as HTMLInputElement;
 
 const buttonTwo = document.querySelector('.js-step-two') as HTMLButtonElement
 const stepTwo = document.querySelector('.step-two') as HTMLElement;
-stepTwo.style.visibility = 'hidden';
+//stepTwo.style.visibility = 'hidden';
 const fetchUserName = document.querySelector('#js-name') as HTMLInputElement;
 
 const submitButton = document.querySelector('.js-submit') as HTMLButtonElement;
 const stepThree = document.querySelector('.step-three') as HTMLElement;
 stepThree.style.visibility = 'hidden';
 const fetchUserPassword = document.querySelector('#js-password') as HTMLInputElement;
-
 
 const user = {
     email: 'your@email.com',
@@ -29,12 +28,14 @@ const toggleButton = (userInput: string, button: HTMLButtonElement) => {
 }
 
 const toggleVisibility = (nextStep: HTMLElement, previousStep: HTMLElement | null): void => {
-    if (nextStep.style.visibility === 'hidden') {
-        nextStep.style.visibility = 'visible';
-    }
-    else {
-        nextStep.style.visibility = 'hidden';
-    }
+
+    nextStep.style.visibility = 'visible';
+    // if (nextStep.style.visibility === 'hidden') {
+
+    // }
+    // else {
+    //     nextStep.style.visibility = 'hidden';
+    // }
 
     if (previousStep !== null) {
         previousStep.style.visibility = 'hidden';
@@ -89,8 +90,24 @@ submitButton?.addEventListener('click', () => {
     user.name = '';
 });
 
-const stepOneTitle = document.querySelector('.js-title') as HTMLLIElement;
+const stepOneTitle = document.querySelector('.js-title-one') as HTMLLIElement;
 stepOneTitle?.addEventListener('click', () => {
-    toggleVisibility(stepOne, null);
+    if (stepOne.style.visibility === 'hidden') {
+        toggleVisibility(stepOne, null);
+    }
+
+    stepTwo.style.visibility = 'hidden';
+    stepThree.style.visibility = 'hidden';
 });
 
+const stepTwoTitle = document.querySelector('.js-title-two') as HTMLLIElement;
+stepTwoTitle?.addEventListener('click', () => {
+    if (stepTwo.style.visibility === 'hidden') {
+        toggleVisibility(stepTwo, null);
+    }
+
+    stepOne.style.visibility = 'hidden';
+    stepThree.style.visibility = 'hidden';
+});
+
+//  
