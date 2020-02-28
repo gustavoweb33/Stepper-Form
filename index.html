@@ -5,28 +5,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="style.css">
         <script src="index.js" defer></script>
     </head>
 
     <body>
         <h2>Step by Step</h2>
         <div class="main-container">
-            <div class="step-one">
-                <h3>Step 1</h3>
-                <div class="step-one-form">
+            <div>
+                <h3 class="js-title step-one-title">Step 1</h3>
+                <div class="js-step-one-form">
                     <p>Your email</p>
                     <input type="text" id='js-email' required>
                     <button class="js-step-one" disabled>Next</button>
                 </div>
 
             </div>
-            <div class="step-two">
+            <div>
                 <h3>Step 2</h3>
-                <p>Your name</p>
-                <input type="text" id="js-name" required>
-                <button class="js-step-two" disabled>Next</button>
+                <div class="step-two">
+                    <p>Your name</p>
+                    <input type="text" id="js-name" required>
+                    <button class="js-step-two" disabled>Next</button>
+                </div>
             </div>
+
             <div class="step-three">
                 <h3>Step 3</h3>
                 <p>Password</p>
